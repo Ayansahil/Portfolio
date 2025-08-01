@@ -214,7 +214,7 @@ const Hero = () => {
                   {/* Replace with your actual image */}
 
                   <img
-                    src="./src/assets/portfolio.jpeg"  // Yeh line change karo
+                    src="./assets/Portfolio.jpeg"  // Yeh line change karo
                     alt="Ayan Sahil"
                     className="w-full h-full object-cover rounded-full"
                     onError={(e) => {

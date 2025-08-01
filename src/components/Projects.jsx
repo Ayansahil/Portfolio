@@ -22,7 +22,7 @@ const Projects = () => {
       title: "Virtual AI Assistant",
       description:
         "A cutting-edge virtual interface project showcasing modern UI/UX principles and interactive design patterns. Built with attention to detail and user experience optimization.",
-      image: "./src/assets/virtual-ai.png",
+      image: "/assets/virtual-ai.png", // Fixed path for Vercel
       category: "frontend",
       technologies: ["HTML", "CSS3", "JavaScript"],
       features: [
@@ -41,7 +41,7 @@ const Projects = () => {
       title: "To-Do List App",
       description:
         "A sleek and intuitive task management application built with React and Tailwind CSS. Features smooth animations, visual feedback for completed tasks, and a clean interface for daily productivity tracking.",
-      image: "./src/assets/todo.png",
+      image: "/assets/todo.png", // Fixed path for Vercel
       category: "frontend",
       technologies: ["React.js", "Tailwind CSS"],
       features: [
@@ -61,7 +61,7 @@ const Projects = () => {
       title: "Gym Website",
       description:
         "A comprehensive gym website featuring both frontend user experience and robust backend infrastructure. Includes dynamic contact forms, API integrations, and a fully responsive design optimized for fitness businesses.",
-      image: "./src/assets/gym.png",
+      image: "/assets/gym.png", // Fixed path for Vercel
       category: "fullstack",
       technologies: [
         "React.js",
@@ -134,8 +134,7 @@ const Projects = () => {
       title: "Weather Forecast App",
       description:
         "A responsive weather forecasting application that uses the OpenWeather API to display real-time weather updates by city name. Built with HTML, CSS, and JavaScript for clean UI and fast API integration.",
-      image:
-        './src/assets/weather.png', // replace later if needed
+      image: "/assets/weather.png", // Fixed path for Vercel
       category: "frontend",
       technologies: ["HTML", "CSS3", "JavaScript", "OpenWeather API"],
       features: [
