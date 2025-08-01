@@ -135,7 +135,7 @@ const Projects = () => {
       description:
         "A responsive weather forecasting application that uses the OpenWeather API to display real-time weather updates by city name. Built with HTML, CSS, and JavaScript for clean UI and fast API integration.",
       image:
-        "https://cdn.dribbble.com/userupload/43368123/file/original-87d43556d4fe0ac75f6c1f16636e69c0.png?resize=1024x768&vertical=center", // replace later if needed
+        './src/assets/weather.png', // replace later if needed
       category: "frontend",
       technologies: ["HTML", "CSS3", "JavaScript", "OpenWeather API"],
       features: [
