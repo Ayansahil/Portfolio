@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, MapPin, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { Calendar, MapPin, ExternalLink } from "lucide-react";
 
 const Experience = () => {
   const [inView, setInView] = useState(false);
@@ -13,7 +13,7 @@ const Experience = () => {
           setInView(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (ref.current) {
@@ -27,63 +27,96 @@ const Experience = () => {
     };
   }, []);
 
+  // logo: '🧑‍💻',
   const experiences = [
     {
-      title: 'Full-Stack Web Developer (MERN Stack)',
-      company: 'Freelance / Self Projects',
-      location: 'Remote',
-      period: 'Ongoing',
-      type: 'Freelance',
-      logo: '🧑‍💻',
-      description: 'Building dynamic web applications using the MERN stack with focus on modern development practices and user experience.',
+      title: "Full-Stack Web Developer Intern (MERN Stack)",
+      company: "Sheryians Coding School",
+      location: "On-site",
+      period: "Nov 2025 – Feb 2026",
+      type: "Training / Internship",
+      logo: "🧑‍💻",
+      description:
+        "Completed hands-on full-stack web development training with real-world project experience, focusing on building scalable, production-ready applications and collaborating in a team-based environment.",
       achievements: [
-        'Built Bookstore App with CRUD functionality, file uploads, and email notifications via Nodemailer',
-        'Created interactive To-Do List App with real-time editing and completion features using React & Tailwind',
-        'Developed complete Gym Website with Vite + Tailwind frontend and PostgreSQL + Express.js backend',
-        'Built Color Shade Generator that accepts hex codes and returns dynamic color variations',
-        'Integrated TMDB REST API for Movie App using Axios and React Router DOM',
-        'Created responsive landing pages with animations using Framer Motion and Lucide Icons'
+        "Contributed to the HRECT recruitment platform by developing frontend features and improving job search and discovery functionality",
+        "Migrated Job ID handling from query parameters to dynamic route parameters for cleaner routing and maintainability",
+        "Implemented session handling for authentication token expiry with automatic login redirection",
+        "Built reusable UI components including graceful error handling for invalid routes",
+        "Performed reverse engineering and feature analysis of the JobTwin platform and prepared internal technical documentation",
+        "Worked in a GitHub-based workflow by creating pull requests, resolving merge conflicts, and testing feature integrations",
       ],
-      technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Axios', 'Tailwind CSS', 'JavaScript', 'Framer Motion']
+      technologies: [
+        "JavaScript",
+        "MongoDB",
+        "Express.js",
+        "React.js",
+        "Node.js",
+        "Tailwind CSS",
+        "Next.js",
+        "JWT Authentication",
+        "REST APIs",
+        "Redis",
+        "Git",
+        "GitHub",
+      ],
     },
     {
-      title: 'Web Development Intern',
-      company: 'Zidio Development',
-      location: 'Remote',
-      period: '3 Months',
-      type: 'Internship',
-      logo: '🧪',
-      description: 'Gained practical experience in full-stack development while working on real-time projects in a startup environment.',
+      title: "Web Development Intern",
+      company: "Zidio Development",
+      location: "Remote",
+      period: "3 Months",
+      type: "Internship",
+      logo: "🧪",
+      description:
+        "Gained practical experience in full-stack development while working on real-time projects in a startup environment.",
       achievements: [
-        'Participated in real-time projects and enhanced practical full-stack development skills',
-        'Gained valuable exposure to startup environments and agile development methodologies',
-        'Learned industry-standard version control practices using Git',
-        'Developed strong teamwork and collaboration skills working with distributed teams',
-        'Applied modern web development technologies in production-level projects'
+        "Participated in real-time projects and enhanced practical full-stack development skills",
+        "Gained valuable exposure to startup environments and agile development methodologies",
+        "Learned industry-standard version control practices using Git",
+        "Developed strong teamwork and collaboration skills working with distributed teams",
+        "Applied modern web development technologies in production-level projects",
       ],
-      technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Git', 'Agile Methodology']
+      technologies: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "Git",
+        "Agile Methodology",
+      ],
     },
     {
-      title: 'Customer Service Associate',
-      company: 'Amazon India',
-      location: 'India',
-      period: '6 Months',
-      type: 'Part-time',
-      logo: '🛍',
-      description: 'Handled customer support operations via chat and call, developing strong communication and problem-solving skills.',
+      title: "Customer Service Associate",
+      company: "Amazon India",
+      location: "India",
+      period: "6 Months",
+      type: "Part-time",
+      logo: "🛍",
+      description:
+        "Handled customer support operations via chat and call, developing strong communication and problem-solving skills.",
       achievements: [
-        'Successfully handled customer queries and complaints through multiple communication channels',
-        'Maintained high service quality standards while working under pressure',
-        'Developed excellent time management skills in fast-paced environment',
-        'Enhanced communication skills focusing on clarity, empathy, and customer satisfaction',
-        'Gained experience in conflict resolution and customer relationship management'
+        "Successfully handled customer queries and complaints through multiple communication channels",
+        "Maintained high service quality standards while working under pressure",
+        "Developed excellent time management skills in fast-paced environment",
+        "Enhanced communication skills focusing on clarity, empathy, and customer satisfaction",
+        "Gained experience in conflict resolution and customer relationship management",
       ],
-      technologies: ['Customer Support Tools', 'Communication Systems', 'Time Management', 'Problem Solving']
-    }
+      technologies: [
+        "Customer Support Tools",
+        "Communication Systems",
+        "Time Management",
+        "Problem Solving",
+      ],
+    },
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-50/50 dark:bg-gray-900/50">
+    <section
+      id="experience"
+      className="py-20 bg-gray-50/50 dark:bg-gray-900/50"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -93,11 +126,12 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Experience 
+            Experience
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            My journey in web development and the projects that shaped my expertise
+            My journey in web development and the projects that shaped my
+            expertise
           </p>
         </motion.div>
 
@@ -113,16 +147,20 @@ const Experience = () => {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
                 className={`relative flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full border-4 border-white dark:border-gray-900 z-10"></div>
 
                 {/* Content Card */}
-                <div className={`w-full md:w-5/12 ml-12 md:ml-0 ${
-                  index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                }`}>
+                <div
+                  className={`w-full md:w-5/12 ml-12 md:ml-0 ${
+                    index % 2 === 0
+                      ? "md:mr-auto md:pr-8"
+                      : "md:ml-auto md:pl-8"
+                  }`}
+                >
                   <motion.div
                     whileHover={{ scale: 1.02, y: -5 }}
                     className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300"
@@ -159,13 +197,17 @@ const Experience = () => {
                         <MapPin size={16} className="mr-2" />
                         {exp.location}
                       </div>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        exp.type === 'Part-time' 
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                          : exp.type === 'Freelance'
-                          ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400'
-                          : 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          exp.type === "Part-time"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
+                            : exp.type === "Freelance"
+                              ? "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400"
+                              : exp.type === "Training / Internship"
+                                ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400"
+                                : "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400"
+                        }`}
+                      >
                         {exp.type}
                       </span>
                     </div>
@@ -182,7 +224,10 @@ const Experience = () => {
                       </h4>
                       <ul className="space-y-1">
                         {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="text-sm text-gray-600 dark:text-gray-300 flex items-start">
+                          <li
+                            key={i}
+                            className="text-sm text-gray-600 dark:text-gray-300 flex items-start"
+                          >
                             <span className="text-blue-600 dark:text-blue-400 mr-2 mt-1.5 w-1 h-1 bg-current rounded-full flex-shrink-0"></span>
                             {achievement}
                           </li>
