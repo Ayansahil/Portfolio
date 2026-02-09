@@ -10,7 +10,7 @@ import {
   Film,
   Dumbbell,
   BookOpen,
-  Sun,
+  Monitor,
 } from "lucide-react";
 
 const Projects = () => {
@@ -84,38 +84,38 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "Bookstore App",
+      title: "MyNotes App",
       description:
-        "A full-stack library management system with comprehensive book and subscriber management. Features real-time email notifications, file upload capabilities, and a complete admin panel for managing inventory and user interactions.",
-      image:
-        "https://images.adsttc.com/media/images/573c/90c0/e58e/ce1e/1600/0007/large_jpg/Here_is_a_theater_to_unfold_an_outstanding_drama__and_the_characters_are_book_lovers_sitting_on_the_soft_couch_or_standing_beside_the_bookshelves._0004.jpg?1463587001",
+        "A full-stack sticky notes application with colorful card-based UI and real-time CRUD operations. Features smooth animations, search functionality, edit modal, and toast notifications for seamless note management with a playful sticky-note aesthetic.",
+      image: "/assets/notes.png",
       category: "fullstack",
       technologies: [
+        "React",
         "Node.js",
         "Express.js",
         "MongoDB",
-        "Nodemailer",
-        "Multer",
-        "Bootstrap",
+        "Axios",
+        "CSS3",
       ],
       features: [
         "CRUD Operations",
-        "File Uploads",
-        "Email Confirmations",
-        "Admin Panel",
+        "Real-time Search",
+        "Edit Modal",
+        "Toast Notifications",
+        "Colorful Sticky Design",
+        "Smooth Animations",
       ],
-      github: "https://github.com/Ayansahil/Bookstore",
-      live: "",
+      github: "https://github.com/Ayansahil/backend/tree/main/day8",
+      live: "https://notes-app-g18m.onrender.com/",
       icon: BookOpen,
-      hoverColor: "purple",
+      hoverColor: "orange",
     },
     {
       id: 5,
       title: "Movie App",
       description:
         "A modern movie discovery platform that leverages the TMDB API to showcase trending films. Built with React Router for seamless navigation and Axios for efficient API data fetching and management.",
-      image:
-        "https://cdn.dribbble.com/userupload/43368123/file/original-87d43556d4fe0ac75f6c1f16636e69c0.png?resize=1024x768&vertical=center",
+      image: "/assets/movie.png",
       category: "frontend",
       technologies: ["React.js", "Axios", "TMDB API", "React Router DOM"],
       features: [
@@ -124,29 +124,38 @@ const Projects = () => {
         "Routing System",
         "API Integration",
       ],
-      github: "https://github.com/Ayansahil/movie-app",
-      live: "",
+      github: "https://github.com/Ayansahil/movie-ui",
+      live: "https://movie-app-ten-ruby.vercel.app/",
       icon: Film,
       hoverColor: "cyan",
     },
     {
       id: 6,
-      title: "Weather Forecast App",
+      title: "macOS Desktop Clone",
       description:
-        "A responsive weather forecasting application that uses the OpenWeather API to display real-time weather updates by city name. Built with HTML, CSS, and JavaScript for clean UI and fast API integration.",
-      image: "/assets/weather.png", // Fixed path for Vercel
+        "A fully interactive macOS-style desktop built for the web, featuring dock, control center, draggable windows, real-time clock, wallpaper switching, and multiple in-app applications to simulate a real desktop experience.",
+      image: "/assets/mac-os.png",
       category: "frontend",
-      technologies: ["HTML", "CSS3", "JavaScript", "OpenWeather API"],
-      features: [
-        "Real-time Weather Display",
-        "City-based Search",
-        "Clean and Responsive UI",
-        "API Error Handling",
+      technologies: [
+        "React.js",
+        "Vite",
+        "SCSS",
+        "React RND",
+        "React Console Emulator",
+        "React Syntax Highlighter",
+        "Markdown",
       ],
-      github: "https://github.com/Ayansahil/WeatherApp",
-      live: "",
-      icon: Sun,
-      hoverColor: "lime",
+      features: [
+        "macOS Desktop Interface",
+        "Draggable & Resizable Windows",
+        "Control Center & Dock System",
+        "Real-time Clock & Wallpaper Switcher",
+        "Built-in Apps (Terminal, GitHub, Notes, Spotify)",
+      ],
+      github: "https://github.com/Ayansahil/mac-os",
+      live: "https://mac-os-ebon.vercel.app/",
+      icon: Monitor,
+      hoverColor: "blue",
     },
   ];
 
