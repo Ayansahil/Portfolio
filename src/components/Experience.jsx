@@ -33,7 +33,7 @@ const Experience = () => {
       title: "Full-Stack Web Developer Intern (MERN Stack)",
       company: "Sheryians Coding School",
       location: "On-site",
-      period: "Nov 2025 – Feb 2026",
+      period: "3 Months",
       type: "Training / Internship",
       logo: "🧑‍💻",
       description:
@@ -61,6 +61,38 @@ const Experience = () => {
         "GitHub",
       ],
     },
+
+    {
+      title: "Full-Stack Web Developer",
+      company: "Freelance",
+      location: "Remote",
+      period: "Ongoing",
+      type: "Freelance",
+      logo: "💻",
+      description:
+        "Built and deployed a complete service-based business website (BhopalRepair.in) for a real client, focusing on SEO-friendly architecture, fast performance, clean UI, and scalable React-based development.",
+      achievements: [
+        "Designed and delivered the complete BhopalRepair.in website from scratch for a local service business",
+        "Created SEO-optimized service pages with proper canonical URLs, sitemap integration, and Google Search Console setup",
+        "Implemented clean routing structure with trailing-slash consistency to avoid duplicate indexing issues",
+        "Handled end-to-end deployment, domain setup, redirects (www/non-www), and production optimization",
+        "Integrated contact and service inquiry flows with a focus on local lead generation",
+        "Worked directly with the client on requirements, revisions, SEO fixes, and post-deployment support",
+      ],
+      technologies: [
+        "React.js",
+        "JavaScript (ES6+)",
+        "Vite",
+        "Tailwind CSS",
+        "React Helmet (SEO)",
+        "HTML5",
+        "CSS3",
+        "Google Search Console",
+        "Sitemap.xml",
+        "Vercel Deployment",
+      ],
+    },
+
     {
       title: "Web Development Intern",
       company: "Zidio Development",
