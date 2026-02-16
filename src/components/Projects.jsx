@@ -11,6 +11,7 @@ import {
   Dumbbell,
   BookOpen,
   Monitor,
+  Wrench,
 } from "lucide-react";
 
 const Projects = () => {
@@ -22,7 +23,7 @@ const Projects = () => {
       title: "Virtual AI Assistant",
       description:
         "A cutting-edge virtual interface project showcasing modern UI/UX principles and interactive design patterns. Built with attention to detail and user experience optimization.",
-      image: "/assets/virtual-ai.png", // Fixed path for Vercel
+      image: "/assets/virtual-ai.png", 
       category: "frontend",
       technologies: ["HTML", "CSS3", "JavaScript"],
       features: [
@@ -41,7 +42,7 @@ const Projects = () => {
       title: "To-Do List App",
       description:
         "A sleek and intuitive task management application built with React and Tailwind CSS. Features smooth animations, visual feedback for completed tasks, and a clean interface for daily productivity tracking.",
-      image: "/assets/todo.png", // Fixed path for Vercel
+      image: "/assets/todo.png",
       category: "frontend",
       technologies: ["React.js", "Tailwind CSS"],
       features: [
@@ -61,7 +62,7 @@ const Projects = () => {
       title: "Gym Website",
       description:
         "A comprehensive gym website featuring both frontend user experience and robust backend infrastructure. Includes dynamic contact forms, API integrations, and a fully responsive design optimized for fitness businesses.",
-      image: "/assets/gym.png", // Fixed path for Vercel
+      image: "/assets/gym.png", 
       category: "fullstack",
       technologies: [
         "React.js",
@@ -108,7 +109,7 @@ const Projects = () => {
       github: "https://github.com/Ayansahil/backend/tree/main/day8",
       live: "https://notes-app-g18m.onrender.com/",
       icon: BookOpen,
-      hoverColor: "orange",
+      hoverColor: "rose",
     },
     {
       id: 5,
@@ -156,6 +157,34 @@ const Projects = () => {
       live: "https://mac-os-ebon.vercel.app/",
       icon: Monitor,
       hoverColor: "blue",
+    },
+    {
+      id: 7,
+      title: "Xpert Repair (BhopalRepair.in)",
+      description:
+        "A service-based business website developed for Xpert Repair to provide appliance repair services in Bhopal. The platform showcases multiple repair categories, enables customers to submit service requests, and ensures a smooth and responsive user experience across devices. Built with a focus on performance, SEO structure, and real client usability.",
+      image: "/assets/xpert-repair.png",
+      category: "fullstack",
+      technologies: [
+        "React.js",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "REST API",
+        "SEO Optimization",
+      ],
+      features: [
+        "Service-based Landing Pages",
+        "Appliance Repair Categories",
+        "Contact & Service Request Form",
+        "Mobile Responsive Design",
+        "SEO-Friendly Structure",
+      ],
+      github: "https://github.com/Ayansahil/xpert-repair",
+      live: "https://bhopalrepair.in/",
+      icon: Wrench,
+      hoverColor: "indigo",
     },
   ];
 
@@ -300,6 +329,21 @@ const Projects = () => {
                     backdrop: "group-hover:bg-lime-500/10",
                     button: "hover:bg-lime-500/30",
                     glow: "group-hover:shadow-lime-500/20",
+                  },
+                  indigo: {
+                    shadow: "hover:shadow-indigo-500/25",
+                    border:
+                      "hover:border-indigo-200 dark:hover:border-indigo-800",
+                    backdrop: "group-hover:bg-indigo-500/10",
+                    button: "hover:bg-indigo-500/30",
+                    glow: "group-hover:shadow-indigo-500/20",
+                  },
+                  rose: {
+                    shadow: "hover:shadow-rose-500/25",
+                    border: "hover:border-rose-200 dark:hover:border-rose-800",
+                    backdrop: "group-hover:bg-rose-500/10",
+                    button: "hover:bg-rose-500/30",
+                    glow: "group-hover:shadow-rose-500/20",
                   },
                 };
                 return colorMap[color] || colorMap.blue;

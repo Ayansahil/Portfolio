@@ -131,7 +131,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium transition-all duration-200 hover:shadow-lg"
-                onClick={() => window.open("https://resume-pdf-zeta.vercel.app/Ayan%20Professional%20Cv.pdf", "_blank")}>
+                onClick={() => window.open("https://resume-pdf-zeta.vercel.app/resume.pdf", "_blank")}>
                 <Download size={20} className="mr-2" />
                 View Resume
               </motion.button>

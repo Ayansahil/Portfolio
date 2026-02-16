@@ -69,21 +69,11 @@
 </tr>
 </table>
 
----
 
-## 🖥️ Preview
 
-<div align="center">
 
-### Desktop View
-![Desktop Preview](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Desktop+Preview)
 
-### Mobile View
-<img src="https://via.placeholder.com/300x600/1a1a1a/ffffff?text=Mobile+Preview" alt="Mobile Preview" width="300">
 
-</div>
-
----
 
 ## 🏗️ Tech Stack
 

@@ -23,7 +23,7 @@ const Footer = () => {
     Resources: [
       { name: "Blog", href: "/blog", type: "route" },
       { name: "Portfolio", href: "/portfolio", type: "route" },
-      { name: "Resume", href: "https://resume-pdf-zeta.vercel.app/Ayan%20Professional%20Cv.pdf", type: "external" },
+      { name: "Resume", href: "https://resume-pdf-zeta.vercel.app/resume.pdf", type: "external" },
       { name: "Contact", href: "/contact", type: "route" },
     ],
   };
@@ -50,7 +50,7 @@ const Footer = () => {
     },
     { 
       icon: FileText, 
-      href: "https://resume-pdf-zeta.vercel.app/Ayan%20Professional%20Cv.pdf", 
+      href: "https://resume-pdf-zeta.vercel.app/resume.pdf", 
       label: "Resume",
       color: "hover:from-green-600 hover:to-green-500"
     },
