@@ -1,13 +1,105 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Globe, Music, Camera, Zap, Film, Dumbbell, Gamepad2, Plane } from 'lucide-react';
+import {
+  Globe,
+  Music,
+  Camera,
+  Zap,
+  Film,
+  Dumbbell,
+  Gamepad2,
+  Plane,
+  Code2,
+  Server,
+  Database,
+  Terminal,
+} from 'lucide-react';
+
+
+const skillCategories = [
+  {
+    title: 'Frontend',
+    icon: Code2,
+    accent: 'blue',
+    skills: [
+      { name: 'HTML5', icon: '/assets/skills/html.svg' },
+      { name: 'CSS3', icon: '/assets/skills/css.svg' },
+      { name: 'JavaScript', icon: '/assets/skills/javascript.svg' },
+      { name: 'Tailwind CSS', icon: '/assets/skills/tailwindcss.svg' },
+      { name: 'React.js', icon: '/assets/skills/react.svg' },
+      { name: 'Next.js', icon: '/assets/skills/nextjs.svg' },
+    ],
+  },
+  {
+    title: 'Backend',
+    icon: Server,
+    accent: 'purple',
+    skills: [
+      { name: 'Node.js', icon: '/assets/skills/nodejs.svg' },
+      { name: 'Express.js', icon: '/assets/skills/express.svg' },
+      { name: 'Socket.io', icon: '/assets/skills/socketio.svg' },
+    ],
+  },
+  {
+    title: 'Database',
+    icon: Database,
+    accent: 'emerald',
+    skills: [
+      { name: 'MongoDB', icon: '/assets/skills/mongodb.svg' },
+      { name: 'PostgreSQL', icon: '/assets/skills/postgresql.svg' },
+    ],
+  },
+  {
+    title: 'DevOps & Tools',
+    icon: Terminal,
+    accent: 'cyan',
+    skills: [
+      { name: 'Docker', icon: '/assets/skills/docker.svg' },
+      { name: 'Kubernetes', icon: '/assets/skills/kubernetes.svg' },
+      { name: 'Git', icon: '/assets/skills/git.svg' },
+      { name: 'GitHub', icon: '/assets/skills/github.svg' },
+      { name: 'Postman', icon: '/assets/skills/postman.svg' },
+    ],
+  },
+];
+
+const accentClasses = {
+  blue: {
+    iconWrap: 'bg-blue-500/10 border-blue-500/20 text-blue-600 dark:text-blue-400',
+    glow: 'bg-blue-500',
+    pillHover:
+      'hover:border-blue-400/40 hover:shadow-blue-500/20 dark:hover:border-blue-400/30',
+    cardHover: 'hover:border-blue-300/50 dark:hover:border-blue-500/30',
+  },
+  purple: {
+    iconWrap: 'bg-purple-500/10 border-purple-500/20 text-purple-600 dark:text-purple-400',
+    glow: 'bg-purple-500',
+    pillHover:
+      'hover:border-purple-400/40 hover:shadow-purple-500/20 dark:hover:border-purple-400/30',
+    cardHover: 'hover:border-purple-300/50 dark:hover:border-purple-500/30',
+  },
+  emerald: {
+    iconWrap: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400',
+    glow: 'bg-emerald-500',
+    pillHover:
+      'hover:border-emerald-400/40 hover:shadow-emerald-500/20 dark:hover:border-emerald-400/30',
+    cardHover: 'hover:border-emerald-300/50 dark:hover:border-emerald-500/30',
+  },
+  cyan: {
+    iconWrap: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-600 dark:text-cyan-400',
+    glow: 'bg-cyan-500',
+    pillHover:
+      'hover:border-cyan-400/40 hover:shadow-cyan-500/20 dark:hover:border-cyan-400/30',
+    cardHover: 'hover:border-cyan-300/50 dark:hover:border-cyan-500/30',
+  },
+};
+
+// Kept for backward-compat export, in case other files import `skills`.
+export const skills = skillCategories.flatMap((c) => c.skills);
 
 const About = () => {
   const [inView, setInView] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
   const ref = useRef(null);
-  const skillsBoxRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,28 +122,6 @@ const About = () => {
     };
   }, []);
 
-  const handleMouseMove = (e) => {
-    if (!skillsBoxRef.current) return;
-    
-    const rect = skillsBoxRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const deltaX = (e.clientX - centerX) / (rect.width / 2);
-    const deltaY = (e.clientY - centerY) / (rect.height / 2);
-    
-    setMousePosition({ x: deltaX * 20, y: deltaY * 20 });
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-    setMousePosition({ x: 0, y: 0 });
-  };
-
   const interests = [
     { name: 'Movies', icon: Film, description: 'Cinema lover and film explorer' },
     { name: 'Fitness', icon: Dumbbell, description: 'Strength and stamina goals' },
@@ -61,66 +131,57 @@ const About = () => {
     { name: 'Photography', icon: Camera, description: 'Capturing creative moments' },
   ];
 
-  const skills = [
-    { name: "HTML5", icon: "🌐", color: "from-orange-500 to-red-500" },
-    { name: "CSS3", icon: "🎨", color: "from-blue-500 to-cyan-500" },
-    { name: "JavaScript", icon: "⚡", color: "from-yellow-500 to-orange-500" },
-    { name: "Tailwind CSS", icon: "🎯", color: "from-cyan-500 to-blue-500" },
-    { name: "Bootstrap", icon: "🅱️", color: "from-purple-500 to-indigo-500" },
-    { name: "React.js", icon: "⚛️", color: "from-blue-400 to-cyan-400" },
-    { name: "Next.js", icon: "▲", color: "from-gray-700 to-gray-900" },
-    { name: "Node.js", icon: "🟢", color: "from-green-500 to-emerald-500" },
-    { name: "Express.js", icon: "🚀", color: "from-gray-600 to-gray-800" },
-    { name: "MongoDB", icon: "🍃", color: "from-green-600 to-green-800" },
-    { name: "MySQL", icon: "🐬", color: "from-blue-600 to-blue-800" },
-    { name: "PostgreSQL", icon: "🐘", color: "from-blue-700 to-indigo-700" },
-    { name: "Git", icon: "📦", color: "from-orange-600 to-red-600" },
-    { name: "GitHub", icon: "🐙", color: "from-gray-800 to-black" },
-    { name: "Postman", icon: "📮", color: "from-orange-500 to-yellow-500" }
-  ];
-
   return (
-    <section id="about" className="py-20 bg-white/50 dark:bg-gray-800/50">
+    <section id="about" className="py-20 lg:py-24 bg-white/50 dark:bg-gray-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-16 lg:mb-20"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl lg:text-[2.75rem] leading-tight font-bold tracking-tight text-gray-900 dark:text-white mb-4">
             About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-14 items-stretch">
+          {/* LEFT SECTION */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="flex flex-col h-full"
           >
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                Hi there! I'm a MERN Stack Developer
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                A passionate <span className="text-blue-600 dark:text-blue-400 font-semibold">Full-Stack Engineer</span> specializing
-                in the MERN ecosystem. My journey began with React's component architecture, which ignited my passion for
-                creating dynamic, interactive user interfaces. From there, I mastered Node.js and Express for robust
-                backend development, while leveraging MongoDB for efficient data management.
+            <h3 className="text-2xl lg:text-[1.65rem] leading-[1.3] font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+              Hi there! I'm a MERN Stack Developer
+            </h3>
+            
+            <div className="space-y-6 text-gray-600 dark:text-gray-300 text-[1.05rem] leading-[1.8] max-w-[65ch]">
+              <p>
+                A passionate{' '}
+                <span className="text-blue-500 dark:text-blue-400 font-medium">
+                  Full-Stack Engineer
+                </span>{' '}
+                specializing in the MERN ecosystem. My journey began with React's component
+                architecture, which ignited my passion for creating dynamic, interactive user
+                interfaces. From there, I mastered Node.js and Express for robust backend
+                development, while leveraging MongoDB for efficient data management.
               </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I excel at building <span className="text-purple-600 dark:text-purple-400 font-semibold">scalable web applications</span> that
-                deliver seamless user experiences. Whether it's crafting responsive frontends, designing RESTful APIs,
-                or optimizing database performance, I bring ideas to life through clean, maintainable code and
-                modern development practices.
+              <p>
+                I excel at building{' '}
+                <span className="text-purple-500 dark:text-purple-400 font-medium">
+                  scalable web applications
+                </span>{' '}
+                that deliver seamless user experiences. Whether it's crafting responsive
+                frontends, designing RESTful APIs, or optimizing database performance, I bring
+                ideas to life through clean, maintainable code and modern development practices.
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 pt-6">
+            <div className="grid grid-cols-3 gap-6 mt-auto pt-10 max-w-[65ch]">
               {[
                 { number: '20+', label: 'MERN Projects' },
                 { number: '2+', label: 'Years Experience' },
@@ -131,13 +192,12 @@ const About = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  className="text-center group cursor-pointer"
-                  whileHover={{ scale: 1.05 }}
+                  className="flex flex-col items-center justify-center text-center group cursor-default"
                 >
-                  <div className="text-2xl lg:text-3xl font-bold text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                  <div className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-blue-500 dark:group-hover:text-blue-400">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -145,153 +205,85 @@ const About = () => {
             </div>
           </motion.div>
 
+          {/* RIGHT SECTION (SKILLS) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
+            className="flex flex-col h-full"
           >
-            <div className="flex items-center justify-center gap-2 mb-6 w-full">
-              <Zap className="w-6 h-6 text-yellow-500" />
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+            <div className="flex items-center justify-start gap-3 mb-6">
+              <Zap className="w-5 h-5 text-yellow-500" />
+              <h3 className="text-2xl lg:text-[1.65rem] leading-[1.3] font-bold tracking-tight text-gray-900 dark:text-white">
                 MERN Stack Expertise
               </h3>
             </div>
 
-            {/* Skills Box with Tilt Effect */}
-            <motion.div
-              ref={skillsBoxRef}
-              className="relative p-8 rounded-2xl bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border-2 border-gray-200/60 dark:border-gray-600/60 hover:border-blue-400/60 dark:hover:border-purple-400/60 shadow-xl hover:shadow-2xl transition-all duration-500"
-              style={{
-                transformStyle: 'preserve-3d',
-                perspective: '1000px'
-              }}
-              animate={{
-                rotateX: isHovering ? -mousePosition.y : 0,
-                rotateY: isHovering ? mousePosition.x : 0,
-                scale: isHovering ? 1.02 : 1,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 800,
-                damping: 15,
-                duration: 0.1
-              }}
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              {/* Gradient Border Glow Effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              
-              {/* Skills Grid */}
-              <div className="grid grid-cols-3 gap-4 relative z-10">
-                {skills.map((skill, index) => (
+            <div className="grid sm:grid-cols-2 auto-rows-fr gap-5 flex-1">
+              {skillCategories.map((category, catIndex) => {
+                const CategoryIcon = category.icon;
+                const accent = accentClasses[category.accent];
+
+                return (
                   <motion.div
-                    key={skill.name}
-                    className="flex flex-col items-center p-4 rounded-xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-500"
-                    whileHover={{ scale: 1.08, y: -8 }}
-                    initial={{ opacity: 0, y: 20 }}
+                    key={category.title}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{
-                      delay: 0.6 + index * 0.05,
+                      delay: 0.5 + catIndex * 0.1,
                       duration: 0.6,
-                      type: "spring",
-                      stiffness: 100
+                      ease: 'easeOut',
                     }}
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      transform: isHovering ? 'translateZ(20px)' : 'translateZ(0px)'
-                    }}
+                    className={`relative overflow-hidden flex flex-col h-full rounded-2xl p-6 border border-gray-200/60 dark:border-white/10 bg-gradient-to-br from-white/90 to-gray-50/60 dark:from-gray-800/70 dark:to-gray-900/70 backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-500 ${accent.cardHover}`}
                   >
-                    <motion.div
-                      className={`w-12 h-12 rounded-lg bg-gradient-to-br ${skill.color} flex items-center justify-center text-white text-xl font-bold mb-3 shadow-lg relative overflow-hidden`}
-                      style={{
-                        transformStyle: 'preserve-3d',
-                        perspective: '1000px'
-                      }}
-                      whileHover={{
-                        scale: 1.3,
-                        boxShadow: '0 15px 35px rgba(0,0,0,0.3)',
-                        rotateY: [0, 180, 360]
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        ease: "easeInOut",
-                        type: "spring",
-                        stiffness: 80,
-                        damping: 10
-                      }}
-                    >
-                      <motion.span
-                        className="text-xl font-bold relative"
-                        whileHover={{
-                          filter: 'brightness(1.3) drop-shadow(0 0 10px rgba(255,255,255,0.8))',
-                          scale: [1, 1.2, 1]
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          ease: "easeInOut"
-                        }}
-                        style={{
-                          backfaceVisibility: 'hidden',
-                          transformStyle: 'preserve-3d'
-                        }}
+                    {/* soft inner glow, top-right */}
+                    <div
+                      className={`pointer-events-none absolute -top-16 -right-16 w-40 h-40 rounded-full blur-3xl opacity-[0.07] dark:opacity-[0.12] ${accent.glow}`}
+                    />
+
+                    <div className="relative z-10 flex items-center gap-3 mb-6">
+                      <div
+                        className={`flex items-center justify-center shrink-0 w-9 h-9 rounded-lg border ${accent.iconWrap}`}
                       >
-                        {skill.icon}
-                      </motion.span>
+                        <CategoryIcon size={18} strokeWidth={2} />
+                      </div>
+                      <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-gray-800 dark:text-gray-200">
+                        {category.title}
+                      </h4>
+                    </div>
 
-                      <motion.div
-                        className="absolute inset-0 rounded-lg border-2 border-white/30"
-                        whileHover={{
-                          rotate: 360,
-                          borderColor: ['rgba(255,255,255,0.3)', 'rgba(255,255,255,0.8)', 'rgba(255,255,255,0.3)']
-                        }}
-                        transition={{
-                          duration: 2,
-                          ease: "linear",
-                          repeat: Infinity
-                        }}
-                      />
-                    </motion.div>
-
-                    <motion.span
-                      className="text-sm font-semibold text-gray-800 dark:text-gray-200 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {skill.name}
-                    </motion.span>
-
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-b-xl" />
+                    <div className="relative z-10 flex flex-wrap gap-2 mt-auto">
+                      {category.skills.map((skill, i) => (
+                        <motion.div
+                          key={skill.name}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={inView ? { opacity: 1, y: 0 } : {}}
+                          transition={{
+                            delay: 0.6 + catIndex * 0.1 + i * 0.04,
+                            duration: 0.4,
+                          }}
+                          whileHover={{ y: -2, scale: 1.02 }}
+                          className={`inline-flex items-center justify-center gap-2 h-[34px] px-3.5 rounded-full border border-gray-200/70 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] backdrop-blur-sm shadow-sm transition-all duration-300 cursor-default ${accent.pillHover} hover:shadow-md hover:bg-white/90 dark:hover:bg-white/[0.08]`}
+                        >
+                          <img
+                            src={skill.icon}
+                            alt=""
+                            loading="lazy"
+                            className="w-4 h-4 object-contain shrink-0"
+                            onError={(e) => {
+                              e.currentTarget.src = '/assets/skills/default.svg';
+                            }}
+                          />
+                          <span className="text-[13px] font-medium tracking-wide leading-none text-gray-700 dark:text-gray-200">
+                            {skill.name}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
                   </motion.div>
-                ))}
-              </div>
-
-              {/* Floating Particles Effect */}
-              <div className="absolute inset-0 pointer-events-none">
-                {[...Array(6)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      scale: isHovering ? [1, 1.5, 1] : 1,
-                      opacity: isHovering ? [0.3, 0.7, 0.3] : 0.3,
-                      y: isHovering ? [0, -20, 0] : 0,
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
         </div>
 
@@ -325,7 +317,11 @@ const About = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <motion.div
                     className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white relative z-10"
-                    whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0], boxShadow: '0 10px 30px rgba(59, 130, 246, 0.4)' }}
+                    whileHover={{
+                      scale: 1.2,
+                      rotate: [0, -10, 10, 0],
+                      boxShadow: '0 10px 30px rgba(59, 130, 246, 0.4)',
+                    }}
                     transition={{ duration: 0.6 }}
                   >
                     <Icon size={24} />

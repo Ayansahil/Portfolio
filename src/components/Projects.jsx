@@ -12,6 +12,8 @@ import {
   BookOpen,
   Monitor,
   Wrench,
+  ShoppingBag,
+  Cpu,
 } from "lucide-react";
 
 const Projects = () => {
@@ -23,7 +25,7 @@ const Projects = () => {
       title: "Virtual AI Assistant",
       description:
         "A cutting-edge virtual interface project showcasing modern UI/UX principles and interactive design patterns. Built with attention to detail and user experience optimization.",
-      image: "/assets/virtual-ai.png", 
+      image: "/assets/projects/virtual-ai.png",
       category: "frontend",
       technologies: ["HTML", "CSS3", "JavaScript"],
       features: [
@@ -37,24 +39,37 @@ const Projects = () => {
       icon: Bot,
       hoverColor: "emerald",
     },
+
     {
       id: 2,
-      title: "To-Do List App",
+      title: "Perplexity - Research Assistant AI",
       description:
-        "A sleek and intuitive task management application built with React and Tailwind CSS. Features smooth animations, visual feedback for completed tasks, and a clean interface for daily productivity tracking.",
-      image: "/assets/todo.png",
-      category: "frontend",
-      technologies: ["React.js", "Tailwind CSS"],
-      features: [
-        "Add/Edit/Delete Tasks",
-        "Toggle Complete",
-        "Visual Feedback",
-        "Responsive Design",
+        "A production-ready, full-stack AI-powered search engine inspired by Perplexity AI. This application combines the power of Large Language Models (LLMs) with real-time web search capabilities to provide accurate, cited, and up-to-date answers.",
+      image: "/assets/projects/perplexity.png",
+      category: "fullstack",
+      technologies: [
+        "React.js ",
+        "Redux Toolkit",
+        "Axios",
+        "Node.js",
+        "Express.js",
+        "Socket.io",
+        "LangChain",
+        "LangGraph",
+        "MongoDB",
+        "Google Gemini Flash",
+        "Mistral AI",
       ],
-      github: "https://github.com/Ayansahil/TodoList",
-      live: "https://ayansahil.github.io/TodoList/",
-      icon: CheckCircle,
-      hoverColor: "orange",
+      features: [
+        "Authentication & User Management",
+        "Chat & AI Integration",
+        "AI + Web Search Workflow (Pro Search)",
+        "Search & Tools",
+      ],
+      github: "https://github.com/Ayansahil/perplexity-ai",
+      live: "https://perplexity-ai-chi.vercel.app/",
+      icon: Cpu,
+      hoverColor: "emerald",
     },
 
     {
@@ -62,7 +77,7 @@ const Projects = () => {
       title: "Gym Website",
       description:
         "A comprehensive gym website featuring both frontend user experience and robust backend infrastructure. Includes dynamic contact forms, API integrations, and a fully responsive design optimized for fitness businesses.",
-      image: "/assets/gym.png", 
+      image: "/assets/projects/gym.png",
       category: "fullstack",
       technologies: [
         "React.js",
@@ -83,12 +98,52 @@ const Projects = () => {
       icon: Dumbbell,
       hoverColor: "blue",
     },
+
     {
       id: 4,
+      title: "AURA LUXE - Ecommerce Platform",
+      description:
+        "A full-stack premium fashion ecommerce platform inspired by modern luxury brands. Features secure authentication, product management, advanced search with debouncing, shopping cart, inventory management, responsive UI, and a seamless shopping experience built with the MERN stack.",
+      image: "/assets/projects/snitch.png",
+      category: "fullstack",
+      technologies: [
+        "React.js",
+        "Express.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Axios",
+        "JWT",
+        "Imagekit",
+        "Aggregation Pipeline",
+        "Multer",
+        "Vercel",
+        "Render",
+      ],
+      features: [
+        "JWT Authentication",
+        "Product & Variant Management",
+        "Debounced Product Search",
+        "Shopping Cart",
+        "Inventory Management",
+        "Category Filtering",
+        "Seller Dashboard",
+        "Responsive Design",
+        "REST API Integration",
+        "Secure Cookie Authentication",
+      ],
+      github: "https://github.com/Ayansahil/snitch",
+      live: "https://snitch-sigma.vercel.app/",
+      icon: ShoppingBag,
+      hoverColor: "rose",
+    },
+
+    {
+      id: 5,
       title: "MyNotes App",
       description:
         "A full-stack sticky notes application with colorful card-based UI and real-time CRUD operations. Features smooth animations, search functionality, edit modal, and toast notifications for seamless note management with a playful sticky-note aesthetic.",
-      image: "/assets/notes.png",
+      image: "/assets/projects/notes.png",
       category: "fullstack",
       technologies: [
         "React",
@@ -111,12 +166,13 @@ const Projects = () => {
       icon: BookOpen,
       hoverColor: "rose",
     },
+
     {
-      id: 5,
+      id: 6,
       title: "Movie App",
       description:
         "A modern movie discovery platform that leverages the TMDB API to showcase trending films. Built with React Router for seamless navigation and Axios for efficient API data fetching and management.",
-      image: "/assets/movie.png",
+      image: "/assets/projects/movie.png",
       category: "frontend",
       technologies: ["React.js", "Axios", "TMDB API", "React Router DOM"],
       features: [
@@ -126,16 +182,17 @@ const Projects = () => {
         "API Integration",
       ],
       github: "https://github.com/Ayansahil/movie-ui",
-      live: "https://movie-app-ten-ruby.vercel.app/",
+      live: "https://sherytv.onrender.com/",
       icon: Film,
       hoverColor: "cyan",
     },
+
     {
-      id: 6,
+      id: 7,
       title: "macOS Desktop Clone",
       description:
         "A fully interactive macOS-style desktop built for the web, featuring dock, control center, draggable windows, real-time clock, wallpaper switching, and multiple in-app applications to simulate a real desktop experience.",
-      image: "/assets/mac-os.png",
+      image: "/assets/projects/mac-os.png",
       category: "frontend",
       technologies: [
         "React.js",
@@ -158,12 +215,13 @@ const Projects = () => {
       icon: Monitor,
       hoverColor: "blue",
     },
+
     {
-      id: 7,
+      id: 8,
       title: "Xpert Repair (BhopalRepair.in)",
       description:
         "A service-based business website developed for Xpert Repair to provide appliance repair services in Bhopal. The platform showcases multiple repair categories, enables customers to submit service requests, and ensures a smooth and responsive user experience across devices. Built with a focus on performance, SEO structure, and real client usability.",
-      image: "/assets/xpert-repair.png",
+      image: "/assets/projects/xpert-repair.png",
       category: "fullstack",
       technologies: [
         "React.js",
@@ -185,6 +243,26 @@ const Projects = () => {
       live: "https://bhopalrepair.in/",
       icon: Wrench,
       hoverColor: "indigo",
+    },
+
+    {
+      id: 9,
+      title: "To-Do List App",
+      description:
+        "A sleek and intuitive task management application built with React and Tailwind CSS. Features smooth animations, visual feedback for completed tasks, and a clean interface for daily productivity tracking.",
+      image: "/assets/projects/todo.png",
+      category: "frontend",
+      technologies: ["React.js", "Tailwind CSS"],
+      features: [
+        "Add/Edit/Delete Tasks",
+        "Toggle Complete",
+        "Visual Feedback",
+        "Responsive Design",
+      ],
+      github: "https://github.com/Ayansahil/TodoList",
+      live: "https://ayansahil.github.io/TodoList/",
+      icon: CheckCircle,
+      hoverColor: "orange",
     },
   ];
 
