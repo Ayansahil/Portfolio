@@ -1,270 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Github,
-  ExternalLink,
-  Database,
-  Globe,
-  Bot,
-  CheckCircle,
-  Film,
-  Dumbbell,
-  BookOpen,
-  Monitor,
-  Wrench,
-  ShoppingBag,
-  Cpu,
-} from "lucide-react";
+import { Github, ExternalLink, Globe } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { projects } from "../data/projects";
 
+gsap.registerPlugin(ScrollTrigger);
+
+// --- MAIN EXPORTED COMPONENT ---
 const Projects = () => {
+  return (
+    <>
+      <MobileProjects />
+      <DesktopProjects />
+    </>
+  );
+};
+
+export default Projects;
+
+const MobileProjects = () => {
   const [filter, setFilter] = useState("all");
-
-  const projects = [
-    {
-      id: 1,
-      title: "Virtual AI Assistant",
-      description:
-        "A cutting-edge virtual interface project showcasing modern UI/UX principles and interactive design patterns. Built with attention to detail and user experience optimization.",
-      image: "/assets/projects/virtual-ai.png",
-      category: "frontend",
-      technologies: ["HTML", "CSS3", "JavaScript"],
-      features: [
-        "Interactive UI",
-        "Modern Design",
-        "Responsive Layout",
-        "Animation Effects",
-      ],
-      github: "https://github.com/Ayansahil/Virtual-AI-Assistant",
-      live: "https://ayansahil.github.io/Virtual-AI-Assistant/",
-      icon: Bot,
-      hoverColor: "emerald",
-    },
-
-    {
-      id: 2,
-      title: "Perplexity - Research Assistant AI",
-      description:
-        "A production-ready, full-stack AI-powered search engine inspired by Perplexity AI. This application combines the power of Large Language Models (LLMs) with real-time web search capabilities to provide accurate, cited, and up-to-date answers.",
-      image: "/assets/projects/perplexity.png",
-      category: "fullstack",
-      technologies: [
-        "React.js ",
-        "Redux Toolkit",
-        "Axios",
-        "Node.js",
-        "Express.js",
-        "Socket.io",
-        "LangChain",
-        "LangGraph",
-        "MongoDB",
-        "Google Gemini Flash",
-        "Mistral AI",
-      ],
-      features: [
-        "Authentication & User Management",
-        "Chat & AI Integration",
-        "AI + Web Search Workflow (Pro Search)",
-        "Search & Tools",
-      ],
-      github: "https://github.com/Ayansahil/perplexity-ai",
-      live: "https://perplexity-ai-chi.vercel.app/",
-      icon: Cpu,
-      hoverColor: "emerald",
-    },
-
-    {
-      id: 3,
-      title: "Gym Website",
-      description:
-        "A comprehensive gym website featuring both frontend user experience and robust backend infrastructure. Includes dynamic contact forms, API integrations, and a fully responsive design optimized for fitness businesses.",
-      image: "/assets/projects/gym.png",
-      category: "fullstack",
-      technologies: [
-        "React.js",
-        "Vite",
-        "Tailwind",
-        "Node.js",
-        "Express.js",
-        "PostgreSQL",
-      ],
-      features: [
-        "Contact Forms",
-        "API Integration",
-        "Dynamic Sections",
-        "Database Management",
-      ],
-      github: "https://github.com/Ayansahil/Gym-web/tree/main/frontend",
-      live: "https://gym-hu9ss7icx-ayan-sahils-projects.vercel.app/",
-      icon: Dumbbell,
-      hoverColor: "blue",
-    },
-
-    {
-      id: 4,
-      title: "AURA LUXE - Ecommerce Platform",
-      description:
-        "A full-stack premium fashion ecommerce platform inspired by modern luxury brands. Features secure authentication, product management, advanced search with debouncing, shopping cart, inventory management, responsive UI, and a seamless shopping experience built with the MERN stack.",
-      image: "/assets/projects/snitch.png",
-      category: "fullstack",
-      technologies: [
-        "React.js",
-        "Express.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Axios",
-        "JWT",
-        "Imagekit",
-        "Aggregation Pipeline",
-        "Multer",
-        "Vercel",
-        "Render",
-      ],
-      features: [
-        "JWT Authentication",
-        "Product & Variant Management",
-        "Debounced Product Search",
-        "Shopping Cart",
-        "Inventory Management",
-        "Category Filtering",
-        "Seller Dashboard",
-        "Responsive Design",
-        "REST API Integration",
-        "Secure Cookie Authentication",
-      ],
-      github: "https://github.com/Ayansahil/snitch",
-      live: "https://snitch-sigma.vercel.app/",
-      icon: ShoppingBag,
-      hoverColor: "rose",
-    },
-
-    {
-      id: 5,
-      title: "MyNotes App",
-      description:
-        "A full-stack sticky notes application with colorful card-based UI and real-time CRUD operations. Features smooth animations, search functionality, edit modal, and toast notifications for seamless note management with a playful sticky-note aesthetic.",
-      image: "/assets/projects/notes.png",
-      category: "fullstack",
-      technologies: [
-        "React",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Axios",
-        "CSS3",
-      ],
-      features: [
-        "CRUD Operations",
-        "Real-time Search",
-        "Edit Modal",
-        "Toast Notifications",
-        "Colorful Sticky Design",
-        "Smooth Animations",
-      ],
-      github: "https://github.com/Ayansahil/backend/tree/main/day8",
-      live: "https://notes-app-g18m.onrender.com/",
-      icon: BookOpen,
-      hoverColor: "rose",
-    },
-
-    {
-      id: 6,
-      title: "Movie App",
-      description:
-        "A modern movie discovery platform that leverages the TMDB API to showcase trending films. Built with React Router for seamless navigation and Axios for efficient API data fetching and management.",
-      image: "/assets/projects/movie.png",
-      category: "frontend",
-      technologies: ["React.js", "Axios", "TMDB API", "React Router DOM"],
-      features: [
-        "Movie Data Fetching",
-        "Dynamic Cards",
-        "Routing System",
-        "API Integration",
-      ],
-      github: "https://github.com/Ayansahil/movie-ui",
-      live: "https://sherytv.onrender.com/",
-      icon: Film,
-      hoverColor: "cyan",
-    },
-
-    {
-      id: 7,
-      title: "macOS Desktop Clone",
-      description:
-        "A fully interactive macOS-style desktop built for the web, featuring dock, control center, draggable windows, real-time clock, wallpaper switching, and multiple in-app applications to simulate a real desktop experience.",
-      image: "/assets/projects/mac-os.png",
-      category: "frontend",
-      technologies: [
-        "React.js",
-        "Vite",
-        "SCSS",
-        "React RND",
-        "React Console Emulator",
-        "React Syntax Highlighter",
-        "Markdown",
-      ],
-      features: [
-        "macOS Desktop Interface",
-        "Draggable & Resizable Windows",
-        "Control Center & Dock System",
-        "Real-time Clock & Wallpaper Switcher",
-        "Built-in Apps (Terminal, GitHub, Notes, Spotify)",
-      ],
-      github: "https://github.com/Ayansahil/mac-os",
-      live: "https://mac-os-ebon.vercel.app/",
-      icon: Monitor,
-      hoverColor: "blue",
-    },
-
-    {
-      id: 8,
-      title: "Xpert Repair (BhopalRepair.in)",
-      description:
-        "A service-based business website developed for Xpert Repair to provide appliance repair services in Bhopal. The platform showcases multiple repair categories, enables customers to submit service requests, and ensures a smooth and responsive user experience across devices. Built with a focus on performance, SEO structure, and real client usability.",
-      image: "/assets/projects/xpert-repair.png",
-      category: "fullstack",
-      technologies: [
-        "React.js",
-        "Vite",
-        "Tailwind CSS",
-        "Node.js",
-        "Express.js",
-        "REST API",
-        "SEO Optimization",
-      ],
-      features: [
-        "Service-based Landing Pages",
-        "Appliance Repair Categories",
-        "Contact & Service Request Form",
-        "Mobile Responsive Design",
-        "SEO-Friendly Structure",
-      ],
-      github: "https://github.com/Ayansahil/xpert-repair",
-      live: "https://bhopalrepair.in/",
-      icon: Wrench,
-      hoverColor: "indigo",
-    },
-
-    {
-      id: 9,
-      title: "To-Do List App",
-      description:
-        "A sleek and intuitive task management application built with React and Tailwind CSS. Features smooth animations, visual feedback for completed tasks, and a clean interface for daily productivity tracking.",
-      image: "/assets/projects/todo.png",
-      category: "frontend",
-      technologies: ["React.js", "Tailwind CSS"],
-      features: [
-        "Add/Edit/Delete Tasks",
-        "Toggle Complete",
-        "Visual Feedback",
-        "Responsive Design",
-      ],
-      github: "https://github.com/Ayansahil/TodoList",
-      live: "https://ayansahil.github.io/TodoList/",
-      icon: CheckCircle,
-      hoverColor: "orange",
-    },
-  ];
 
   const categories = [
     { id: "all", label: "All Projects", count: projects.length },
@@ -287,17 +43,16 @@ const Projects = () => {
 
   return (
     <section
-      id="projects"
-      className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+      id="projects-mobile"
+      className="lg:hidden py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -307,33 +62,31 @@ const Projects = () => {
           >
             <Globe className="w-8 h-8 text-white" />
           </motion.div>
-
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             A collection of my recent work showcasing full-stack development,
             frontend expertise, and modern web technologies
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-10"
         >
-          <div className="flex flex-wrap gap-2 p-1 bg-white/80 dark:bg-gray-800/80 rounded-2xl backdrop-blur-sm shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <div className="flex flex-wrap justify-center gap-2 p-1 bg-white/80 dark:bg-gray-800/80 rounded-2xl backdrop-blur-sm shadow-lg border border-gray-200/50 dark:border-gray-700/50">
             {categories.map((category) => (
               <motion.button
                 key={category.id}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setFilter(category.id)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 ${
+                className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 text-sm ${
                   filter === category.id
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -341,7 +94,7 @@ const Projects = () => {
               >
                 <span>{category.label}</span>
                 <span
-                  className={`text-xs px-2 py-1 rounded-full ${
+                  className={`text-xs px-2 py-0.5 rounded-full ${
                     filter === category.id
                       ? "bg-white/20 text-white"
                       : "bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-400"
@@ -354,81 +107,10 @@ const Projects = () => {
           </div>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           <AnimatePresence mode="wait">
             {filteredProjects.map((project, index) => {
               const IconComponent = project.icon;
-
-              // Define hover color classes based on project hoverColor
-              const getHoverClasses = (color) => {
-                const colorMap = {
-                  emerald: {
-                    shadow: "hover:shadow-emerald-500/25",
-                    border:
-                      "hover:border-emerald-200 dark:hover:border-emerald-800",
-                    backdrop: "group-hover:bg-emerald-500/10",
-                    button: "hover:bg-emerald-500/30",
-                    glow: "group-hover:shadow-emerald-500/20",
-                  },
-                  blue: {
-                    shadow: "hover:shadow-blue-500/25",
-                    border: "hover:border-blue-200 dark:hover:border-blue-800",
-                    backdrop: "group-hover:bg-blue-500/10",
-                    button: "hover:bg-blue-500/30",
-                    glow: "group-hover:shadow-blue-500/20",
-                  },
-                  purple: {
-                    shadow: "hover:shadow-purple-500/25",
-                    border:
-                      "hover:border-purple-200 dark:hover:border-purple-800",
-                    backdrop: "group-hover:bg-purple-500/10",
-                    button: "hover:bg-purple-500/30",
-                    glow: "group-hover:shadow-purple-500/20",
-                  },
-                  orange: {
-                    shadow: "hover:shadow-orange-500/25",
-                    border:
-                      "hover:border-orange-200 dark:hover:border-orange-800",
-                    backdrop: "group-hover:bg-orange-500/10",
-                    button: "hover:bg-orange-500/30",
-                    glow: "group-hover:shadow-orange-500/20",
-                  },
-                  cyan: {
-                    shadow: "hover:shadow-cyan-500/25",
-                    border: "hover:border-cyan-200 dark:hover:border-cyan-800",
-                    backdrop: "group-hover:bg-cyan-500/10",
-                    button: "hover:bg-cyan-500/30",
-                    glow: "group-hover:shadow-cyan-500/20",
-                  },
-                  lime: {
-                    shadow: "hover:shadow-lime-500/25",
-                    border: "hover:border-lime-200 dark:hover:border-lime-800",
-                    backdrop: "group-hover:bg-lime-500/10",
-                    button: "hover:bg-lime-500/30",
-                    glow: "group-hover:shadow-lime-500/20",
-                  },
-                  indigo: {
-                    shadow: "hover:shadow-indigo-500/25",
-                    border:
-                      "hover:border-indigo-200 dark:hover:border-indigo-800",
-                    backdrop: "group-hover:bg-indigo-500/10",
-                    button: "hover:bg-indigo-500/30",
-                    glow: "group-hover:shadow-indigo-500/20",
-                  },
-                  rose: {
-                    shadow: "hover:shadow-rose-500/25",
-                    border: "hover:border-rose-200 dark:hover:border-rose-800",
-                    backdrop: "group-hover:bg-rose-500/10",
-                    button: "hover:bg-rose-500/30",
-                    glow: "group-hover:shadow-rose-500/20",
-                  },
-                };
-                return colorMap[color] || colorMap.blue;
-              };
-
-              const hoverClasses = getHoverClasses(project.hoverColor);
-
               return (
                 <motion.div
                   key={project.id}
@@ -436,168 +118,54 @@ const Projects = () => {
                   initial={{ opacity: 0, scale: 0.8, y: 50 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: -50 }}
-                  transition={{
-                    delay: index * 0.1,
-                    duration: 0.6,
-                    type: "spring",
-                  }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className={`group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl ${hoverClasses.border} ${hoverClasses.shadow} transition-all duration-500`}
+                  transition={{ delay: index * 0.1, duration: 0.6, type: "spring" }}
+                  className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-gray-200/50 dark:border-gray-700/50"
                 >
-                  {/* Background blur effect on hover */}
-                  <div
-                    className={`absolute inset-0 backdrop-blur-sm opacity-0 ${hoverClasses.backdrop} transition-all duration-500 rounded-2xl`}
-                  ></div>
-
-                  {/* Project Image */}
                   <div className="relative overflow-hidden h-48">
                     <img
                       src={project.image}
-                      alt={`${project.title} - Screenshot showing the user interface and design`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                       <div className="absolute top-4 left-4">
-                        <div
-                          className={`flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl group-hover:scale-110 transition-transform duration-300 ${hoverClasses.glow}`}
-                        >
-                          <IconComponent className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex justify-between items-center">
-                          <div className="flex space-x-2">
-                            {project.github && (
-                              <motion.a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.1, rotate: 5 }}
-                                whileTap={{ scale: 0.9 }}
-                                className={`p-3 bg-white/20 backdrop-blur-sm rounded-xl text-white ${hoverClasses.button} transition-colors duration-200 group/btn`}
-                                title="View GitHub Repository"
-                              >
-                                <Github size={18} />
-                              </motion.a>
-                            )}
-                            {project.live && (
-                              <motion.a
-                                href={project.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.1, rotate: -5 }}
-                                whileTap={{ scale: 0.9 }}
-                                className={`p-3 bg-white/20 backdrop-blur-sm rounded-xl text-white ${hoverClasses.button} transition-colors duration-200 group/btn`}
-                                title="View Live Demo"
-                              >
-                                <ExternalLink size={18} />
-                              </motion.a>
-                            )}
-                          </div>
-
-                          {/* Project Status Badge */}
-                          <div className="flex items-center space-x-2">
-                            {project.live ? (
-                              <span className="px-2 py-1 bg-green-500/80 text-white text-xs rounded-full backdrop-blur-sm">
-                                Live
-                              </span>
-                            ) : (
-                              <span className="px-2 py-1 bg-yellow-500/80 text-white text-xs rounded-full backdrop-blur-sm">
-                                Code
-                              </span>
-                            )}
-                          </div>
+                        <div className="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl">
+                          <IconComponent className="w-5 h-5 text-white" />
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* Project Content */}
-                  <div className="relative p-6 z-10">
+                  <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                         {project.title}
                       </h3>
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          project.category === "fullstack"
-                            ? "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300"
-                            : "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300"
-                        }`}
-                      >
-                        {project.category === "fullstack"
-                          ? "Full Stack"
-                          : "Frontend"}
-                      </span>
                     </div>
-
-                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 line-clamp-3">
                       {project.description}
                     </p>
-
-                    {/* Features */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                        Key Features:
-                      </h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        {project.features.map((feature, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center text-xs text-gray-600 dark:text-gray-400"
-                          >
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
-                            {feature}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Technologies */}
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                        Tech Stack:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, i) => (
-                          <motion.span
-                            key={i}
-                            whileHover={{ scale: 1.05 }}
-                            className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-medium hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-900 dark:hover:to-purple-900 transition-all duration-200"
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Action Buttons */}
                     <div className="flex space-x-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                       {project.github && (
-                        <motion.a
+                        <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="flex-1 flex items-center justify-center px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200 text-sm font-medium"
+                          className="flex-1 flex items-center justify-center px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg text-sm font-medium"
                         >
                           <Github size={16} className="mr-2" />
                           Code
-                        </motion.a>
+                        </a>
                       )}
                       {project.live && (
-                        <motion.a
+                        <a
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-200 text-sm font-medium"
+                          className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg text-sm font-medium"
                         >
                           <ExternalLink size={16} className="mr-2" />
-                          Live Demo
-                        </motion.a>
+                          Demo
+                        </a>
                       )}
                     </div>
                   </div>
@@ -606,41 +174,245 @@ const Projects = () => {
             })}
           </AnimatePresence>
         </div>
-
-        {/* GitHub CTA */}
-        {/* GitHub CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <motion.a
-            href="https://github.com/Ayansahil"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 group"
-          >
-            <Github
-              size={22}
-              className="mr-3 group-hover:rotate-12 transition-transform duration-300"
-            />
-            View All Projects on GitHub
-            <ExternalLink
-              size={18}
-              className="ml-2 group-hover:translate-x-1 transition-transform duration-300"
-            />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );
 };
 
-export default Projects;
+// --- DESKTOP: GSAP ScrollTrigger pinned, stacked-deck showcase ---
+
+const CARD_Y_OFFSET = 5; // % vertical offset per card waiting behind the active one
+const CARD_SCALE_STEP = 0.06; // scale reduction per card waiting behind the active one
+const EXIT_Y = -140; // yPercent the active card travels to as it clears out
+const EXIT_SCALE = 0.9;
+const EXIT_ROTATION = -18;
+
+const DesktopProjects = () => {
+  const sectionRef = useRef(null);
+  const cardRefs = useRef([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const total = projects.length;
+
+  useEffect(() => {
+    const cards = cardRefs.current.filter(Boolean);
+    if (!cards.length) return;
+
+    gsap.ticker.lagSmoothing(0);
+
+    cards.forEach((card, index) => {
+      gsap.set(card, {
+        xPercent: -50,
+        yPercent: -50 + index * CARD_Y_OFFSET,
+        scale: 1 - index * CARD_SCALE_STEP,
+        opacity: 1,
+        rotationX: 0,
+        force3D: true,
+      });
+    });
+
+    const st = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top top",
+      end: `+=${window.innerHeight * Math.max(total - 1, 1)}`,
+      pin: true,
+      pinSpacing: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      scrub: true,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const segment = 1 / Math.max(total - 1, 1);
+        const idx = Math.min(Math.floor(progress / segment), total - 1);
+        const segProgress =
+          total > 1 ? (progress - idx * segment) / segment : 0;
+
+        setActiveIndex(idx);
+
+        cards.forEach((card, index) => {
+          if (index < idx) {
+            // Already viewed — fully cleared out
+            gsap.set(card, {
+              yPercent: EXIT_Y,
+              scale: EXIT_SCALE,
+              opacity: 0,
+              rotationX: EXIT_ROTATION,
+            });
+          } else if (index === idx) {
+            if (index === total - 1) {
+              // Last card just rests in place
+              gsap.set(card, { yPercent: -50, scale: 1, opacity: 1, rotationX: 0 });
+            } else {
+              gsap.set(card, {
+                yPercent: gsap.utils.interpolate(-50, EXIT_Y, segProgress),
+                scale: gsap.utils.interpolate(1, EXIT_SCALE, segProgress),
+                opacity: gsap.utils.interpolate(1, 0, segProgress),
+                rotationX: gsap.utils.interpolate(0, EXIT_ROTATION, segProgress),
+              });
+            }
+          } else {
+            // Waiting in the stack behind
+            const behind = index - idx - segProgress;
+            gsap.set(card, {
+              yPercent: -50 + behind * CARD_Y_OFFSET,
+              scale: 1 - behind * CARD_SCALE_STEP,
+              opacity: 1,
+              rotationX: 0,
+            });
+          }
+        });
+      },
+    });
+
+    return () => st.kill();
+  }, [total]);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="projects-desktop"
+      className="hidden lg:block relative w-full h-screen overflow-hidden bg-gray-50 dark:bg-gray-950"
+      style={{ perspective: "1400px", transformStyle: "preserve-3d" }}
+    >
+      {/* Header */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 z-40 text-center pointer-events-none select-none">
+        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+          Selected Works
+        </h2>
+        <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-4" />
+      </div>
+
+      {/* Left-side progress indicator */}
+      <div className="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4 pointer-events-none select-none">
+        {projects.map((p, i) => (
+          <div key={p.id} className="flex items-center gap-3">
+            <div
+              className={`h-px transition-all duration-500 ${
+                i === activeIndex
+                  ? "w-8 bg-gradient-to-r from-blue-600 to-purple-600"
+                  : "w-4 bg-gray-300 dark:bg-gray-700"
+              }`}
+            />
+            <span
+              className={`text-xs font-mono tracking-wider transition-colors duration-500 ${
+                i === activeIndex
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-400 dark:text-gray-600"
+              }`}
+            >
+              0{i + 1}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Stacked project cards */}
+      {projects.map((project, index) => (
+        <div
+          key={project.id}
+          ref={(el) => {
+            if (el) cardRefs.current[index] = el;
+          }}
+          style={{
+            zIndex: total - index,
+            willChange: "transform, opacity",
+            backfaceVisibility: "hidden",
+          }}
+          className="absolute top-1/2 left-1/2 w-[90%] max-w-6xl origin-top cursor-pointer"
+        >
+          <DesktopCard project={project} index={index} />
+        </div>
+      ))}
+    </section>
+  );
+};
+
+const DesktopCard = ({ project, index }) => {
+  const Icon = project.icon;
+
+  return (
+    <div className="flex flex-col lg:flex-row items-center gap-10 p-8 lg:p-12 rounded-[0.5rem] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]">
+      {/* Image */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center">
+        <div className="w-full aspect-square relative rounded-[1rem] overflow-hidden bg-gray-100 dark:bg-gray-800/50 p-6 border border-gray-200 dark:border-gray-700/50">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-contain drop-shadow-2xl"
+          />
+          <div className="absolute top-6 right-6">
+            {project.live ? (
+              <span className="px-3 py-1 bg-green-500/90 text-white text-xs font-semibold uppercase tracking-wider rounded-full backdrop-blur-sm shadow-sm">
+                Live
+              </span>
+            ) : (
+              <span className="px-3 py-1 bg-yellow-500/90 text-white text-xs font-semibold uppercase tracking-wider rounded-full backdrop-blur-sm shadow-sm">
+                Code
+              </span>
+            )}
+          </div>
+          {Icon && (
+            <div className="absolute bottom-6 left-6 w-12 h-12 bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-xl flex items-center justify-center shadow-lg border border-white/50 dark:border-white/10">
+              <Icon className="w-6 h-6 text-gray-900 dark:text-white" />
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="w-full lg:w-1/2 flex flex-col justify-center text-left">
+        <span className="text-sm font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase mb-4">
+          Project 0{index + 1}
+        </span>
+
+        <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed max-w-xl">
+          {project.description}
+        </p>
+
+        <div className="mb-10">
+          <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
+            Tech Stack:
+          </h4>
+          <div className="flex flex-wrap gap-2 max-w-xl">
+            {project.technologies.map((tech, i) => (
+              <span
+                key={i}
+                className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-medium shadow-sm transition-all duration-200 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-900 dark:hover:to-purple-900"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 mt-auto">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center px-4 py-3 bg-gray-900 dark:bg-gray-700 text-white rounded-xl hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200 text-sm font-medium shadow-md"
+            >
+              <Github size={18} className="mr-2" />
+              Code
+            </a>
+          )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg transition-all duration-200 text-sm font-medium shadow-md"
+            >
+              <ExternalLink size={18} className="mr-2" />
+              Live Demo
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};

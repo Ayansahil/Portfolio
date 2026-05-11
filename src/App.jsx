@@ -12,6 +12,7 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import LenisProvider from './components/LenisProvider';
 
 // Individual Page Components
 const HomePage = () => (
@@ -280,9 +281,11 @@ const AppContent = () => {
 // Main App Component with Router Wrapper
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <LenisProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </LenisProvider>
   );
 }
 
