@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Globe } from "lucide-react";
 import gsap from "gsap";
@@ -108,7 +108,7 @@ const MobileProjects = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {filteredProjects.map((project, index) => {
               const IconComponent = project.icon;
               return (
@@ -193,77 +193,79 @@ const DesktopProjects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const total = projects.length;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const cards = cardRefs.current.filter(Boolean);
     if (!cards.length) return;
 
-    gsap.ticker.lagSmoothing(0);
+    let ctx = gsap.context(() => {
+      gsap.ticker.lagSmoothing(0);
 
-    cards.forEach((card, index) => {
-      gsap.set(card, {
-        xPercent: -50,
-        yPercent: -50 + index * CARD_Y_OFFSET,
-        scale: 1 - index * CARD_SCALE_STEP,
-        opacity: 1,
-        rotationX: 0,
-        force3D: true,
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          xPercent: -50,
+          yPercent: -50 + index * CARD_Y_OFFSET,
+          scale: 1 - index * CARD_SCALE_STEP,
+          opacity: 1,
+          rotationX: 0,
+          force3D: true,
+        });
       });
-    });
 
-    const st = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      end: `+=${window.innerHeight * Math.max(total - 1, 1)}`,
-      pin: true,
-      pinSpacing: true,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      scrub: true,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const segment = 1 / Math.max(total - 1, 1);
-        const idx = Math.min(Math.floor(progress / segment), total - 1);
-        const segProgress =
-          total > 1 ? (progress - idx * segment) / segment : 0;
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: `+=${window.innerHeight * Math.max(total - 1, 1)}`,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        scrub: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const segment = 1 / Math.max(total - 1, 1);
+          const idx = Math.min(Math.floor(progress / segment), total - 1);
+          const segProgress =
+            total > 1 ? (progress - idx * segment) / segment : 0;
 
-        setActiveIndex(idx);
+          setActiveIndex(idx);
 
-        cards.forEach((card, index) => {
-          if (index < idx) {
-            // Already viewed — fully cleared out
-            gsap.set(card, {
-              yPercent: EXIT_Y,
-              scale: EXIT_SCALE,
-              opacity: 0,
-              rotationX: EXIT_ROTATION,
-            });
-          } else if (index === idx) {
-            if (index === total - 1) {
-              // Last card just rests in place
-              gsap.set(card, { yPercent: -50, scale: 1, opacity: 1, rotationX: 0 });
-            } else {
+          cards.forEach((card, index) => {
+            if (index < idx) {
+              // Already viewed — fully cleared out
               gsap.set(card, {
-                yPercent: gsap.utils.interpolate(-50, EXIT_Y, segProgress),
-                scale: gsap.utils.interpolate(1, EXIT_SCALE, segProgress),
-                opacity: gsap.utils.interpolate(1, 0, segProgress),
-                rotationX: gsap.utils.interpolate(0, EXIT_ROTATION, segProgress),
+                yPercent: EXIT_Y,
+                scale: EXIT_SCALE,
+                opacity: 0,
+                rotationX: EXIT_ROTATION,
+              });
+            } else if (index === idx) {
+              if (index === total - 1) {
+                // Last card just rests in place
+                gsap.set(card, { yPercent: -50, scale: 1, opacity: 1, rotationX: 0 });
+              } else {
+                gsap.set(card, {
+                  yPercent: gsap.utils.interpolate(-50, EXIT_Y, segProgress),
+                  scale: gsap.utils.interpolate(1, EXIT_SCALE, segProgress),
+                  opacity: gsap.utils.interpolate(1, 0, segProgress),
+                  rotationX: gsap.utils.interpolate(0, EXIT_ROTATION, segProgress),
+                });
+              }
+            } else {
+              // Waiting in the stack behind
+              const behind = index - idx - segProgress;
+              gsap.set(card, {
+                yPercent: -50 + behind * CARD_Y_OFFSET,
+                scale: 1 - behind * CARD_SCALE_STEP,
+                opacity: 1,
+                rotationX: 0,
               });
             }
-          } else {
-            // Waiting in the stack behind
-            const behind = index - idx - segProgress;
-            gsap.set(card, {
-              yPercent: -50 + behind * CARD_Y_OFFSET,
-              scale: 1 - behind * CARD_SCALE_STEP,
-              opacity: 1,
-              rotationX: 0,
-            });
-          }
-        });
-      },
-    });
+          });
+        },
+      });
+    }, sectionRef);
 
-    return () => st.kill();
+    return () => ctx.revert();
   }, [total]);
 
   return (
