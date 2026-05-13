@@ -124,7 +124,8 @@ const MobileProjects = () => {
                   <div className="relative overflow-hidden h-48">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} - Web Development Project`}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
@@ -338,7 +339,8 @@ const DesktopCard = ({ project, index }) => {
         <div className="w-full aspect-square relative rounded-[1rem] overflow-hidden bg-gray-100 dark:bg-gray-800/50 p-6 border border-gray-200 dark:border-gray-700/50">
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} - Website Development Portfolio`}
+            loading="lazy"
             className="w-full h-full object-contain drop-shadow-2xl"
           />
           <div className="absolute top-6 right-6">

@@ -267,7 +267,7 @@ const About = () => {
                         >
                           <img
                             src={skill.icon}
-                            alt=""
+                            alt={`${skill.name} skill icon`}
                             loading="lazy"
                             className="w-4 h-4 object-contain shrink-0"
                             onError={(e) => {

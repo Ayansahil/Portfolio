@@ -214,8 +214,10 @@ const Hero = () => {
                   {/* Replace with your actual image */}
 
                   <img
-                    src="./assets/projects/Portfolio.jpeg"  // Yeh line change karo
-                    alt="Ayan Sahil"
+                    src="./assets/projects/Portfolio.jpeg"
+                    alt="Ayan - Full Stack Developer in Bhopal"
+                    loading="eager"
+                    fetchpriority="high"
                     className="w-full h-full object-cover rounded-full"
                     onError={(e) => {
                       // Fallback if image doesn't load
