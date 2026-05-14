@@ -23,9 +23,9 @@ const ScrollToTop = React.lazy(() => import('./components/ScrollToTop'));
 const HomePage = () => (
   <>
     <SEO 
-      title="Ayan Web Solutions" 
-      description="Ayan Web Solutions helps businesses build websites that create trust and generate more enquiries. Freelance Web Developer based in Bhopal."
-      keywords="Full Stack Developer Bhopal, React Developer Bhopal, MERN Stack Developer Bhopal, Freelance Web Developer Bhopal"
+      title="Ayan Sahil | Full Stack Developer | Founder of Ayan Web Solutions" 
+      description="Ayan Sahil is a Full Stack Developer and the founder of Ayan Web Solutions, providing professional web development services in Bhopal."
+      keywords="Ayan Sahil, Ayan Web Solutions, Full Stack Developer Bhopal, React Developer Bhopal, MERN Stack Developer Bhopal, Freelance Web Developer Bhopal"
       url="https://ayanportfolio.in"
       jsonLd={[localBusinessSchema, personSchema, webSiteSchema]}
     />
@@ -47,8 +47,8 @@ const AboutPage = () => (
     className="pt-20"
   >
     <SEO 
-      title="About Ayan | Freelance Web Developer" 
-      description="Learn more about Ayan, a Full Stack Developer from Bhopal specializing in React, Vite, Node.js, and technical SEO."
+      title="About Ayan Sahil - Founder of Ayan Web Solutions" 
+      description="Learn more about Ayan Sahil, a Full Stack Developer from Bhopal specializing in React, Vite, Node.js, and technical SEO."
       url="https://ayanportfolio.in/about"
       jsonLd={personSchema}
     />
@@ -65,8 +65,8 @@ const ExperiencePage = () => (
     className="pt-20"
   >
     <SEO 
-      title="Experience | React & Node.js Developer" 
-      description="My professional experience as a Web Developer, building scalable and performant web applications."
+      title="Experience | Ayan Sahil | Ayan Web Solutions" 
+      description="Professional web development experience of Ayan Sahil, building scalable and performant web applications."
       url="https://ayanportfolio.in/experience"
     />
     <Experience />
@@ -82,8 +82,8 @@ const ProjectsPage = () => (
     className="pt-20"
   >
     <SEO 
-      title="Projects | Custom Web Development" 
-      description="Explore my recent projects, including business websites, landing pages, and web applications built with React and Tailwind CSS."
+      title="Projects by Ayan Sahil | Ayan Web Solutions" 
+      description="Explore recent projects by Ayan Sahil and Ayan Web Solutions, including business websites, landing pages, and web apps."
       url="https://ayanportfolio.in/projects"
       jsonLd={getPortfolioSchema("https://ayanportfolio.in/projects")}
     />
@@ -100,8 +100,8 @@ const ServicesPage = () => (
     className="pt-20"
   >
     <SEO 
-      title="Web Development Services | Bhopal" 
-      description="We offer professional website development, UI/UX design, backend development, and performance optimization for local businesses."
+      title="Web Development Services by Ayan Web Solutions" 
+      description="Ayan Web Solutions offers professional website development, UI/UX design, backend development, and performance optimization for local businesses."
       url="https://ayanportfolio.in/services"
       jsonLd={professionalServiceSchema}
     />
@@ -118,8 +118,8 @@ const ContactPage = () => (
     className="pt-20"
   >
     <SEO 
-      title="Contact | Ayan Web Solutions" 
-      description="Get in touch to discuss your next web development project. We build fast, professional websites for businesses."
+      title="Contact Ayan Sahil & Ayan Web Solutions" 
+      description="Get in touch with Ayan Sahil to discuss your next web development project with Ayan Web Solutions."
       url="https://ayanportfolio.in/contact"
     />
     <Contact />
@@ -135,8 +135,8 @@ const BlogPage = () => (
     className="pt-20 min-h-screen flex items-center justify-center"
   >
     <SEO 
-      title="Blog | Web Development & SEO" 
-      description="Read our latest articles on React, technical SEO, and modern web development."
+      title="Blog by Ayan Sahil | Ayan Web Solutions" 
+      description="Read the latest articles on React, technical SEO, and modern web development by Ayan Sahil."
       url="https://ayanportfolio.in/blog"
     />
     <div className="text-center">
@@ -159,8 +159,8 @@ const PortfolioPage = () => (
     className="pt-20"
   >
     <SEO 
-      title="Portfolio | Ayan Web Solutions" 
-      description="View our portfolio of business websites, landing pages, and e-commerce stores."
+      title="Portfolio of Ayan Sahil | Ayan Web Solutions" 
+      description="View the web development portfolio of Ayan Sahil and Ayan Web Solutions."
       url="https://ayanportfolio.in/portfolio"
       jsonLd={getPortfolioSchema("https://ayanportfolio.in/portfolio")}
     />

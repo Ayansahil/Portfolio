@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
   Globe,
   Music,
@@ -156,7 +157,7 @@ const About = () => {
             className="flex flex-col h-full"
           >
             <h3 className="text-2xl lg:text-[1.65rem] leading-[1.3] font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-              Hi there! I'm a MERN Stack Developer
+              Hi there! I'm Ayan Sahil, a Full Stack Developer & Founder of <Link to="/services" className="text-blue-600 hover:underline">Ayan Web Solutions</Link>
             </h3>
             
             <div className="space-y-6 text-gray-600 dark:text-gray-300 text-[1.05rem] leading-[1.8] max-w-[65ch]">

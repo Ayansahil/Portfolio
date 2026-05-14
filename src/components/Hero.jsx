@@ -5,7 +5,7 @@ import Tilt from 'react-parallax-tilt';
 import ReactTypingEffect from 'react-typing-effect';
 
 const Hero = () => {
-  const roles = ['Full Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Tech Enthusiast'];
+  const roles = ['Full Stack Developer', 'Founder of Ayan Web Solutions', 'UI/UX Designer', 'Tech Enthusiast'];
 
   const scrollToAbout = () => {
     document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });

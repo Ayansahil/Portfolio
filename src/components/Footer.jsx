@@ -230,7 +230,7 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="flex items-center text-gray-400 text-sm"
               >
-                <span>© {currentYear} Ayan. Made with</span>
+                <span>© {currentYear} Ayan Web Solutions by Ayan Sahil. Made with</span>
                 <Heart size={16} className="mx-2 text-red-500 animate-pulse" />
                 <span>and</span>
                 <Code size={16} className="mx-2 text-blue-400" />

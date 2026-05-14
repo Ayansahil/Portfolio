@@ -173,7 +173,7 @@ const ContactPage = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
+            Ready to start your next project? Contact Ayan Sahil and the team at Ayan Web Solutions to bring your ideas to life.
           </p>
         </motion.div>
 
