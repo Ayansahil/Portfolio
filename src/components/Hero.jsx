@@ -218,6 +218,8 @@ const Hero = () => {
                     alt="Ayan - Full Stack Developer in Bhopal"
                     loading="eager"
                     fetchpriority="high"
+                    width="400"
+                    height="400"
                     className="w-full h-full object-cover rounded-full"
                     onError={(e) => {
                       // Fallback if image doesn't load

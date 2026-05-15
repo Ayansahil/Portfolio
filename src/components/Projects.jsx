@@ -8,18 +8,19 @@ import { projects } from "../data/projects";
 gsap.registerPlugin(ScrollTrigger);
 
 // --- MAIN EXPORTED COMPONENT ---
-const Projects = () => {
+const Projects = ({ isMainPage = false }) => {
+  const HeadingTag = isMainPage ? 'h1' : 'h2';
   return (
     <>
-      <MobileProjects />
-      <DesktopProjects />
+      <MobileProjects HeadingTag={HeadingTag} />
+      <DesktopProjects HeadingTag={HeadingTag} />
     </>
   );
 };
 
 export default Projects;
 
-const MobileProjects = () => {
+const MobileProjects = ({ HeadingTag }) => {
   const [filter, setFilter] = useState("all");
 
   const categories = [
@@ -62,9 +63,9 @@ const MobileProjects = () => {
           >
             <Globe className="w-8 h-8 text-white" />
           </motion.div>
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <HeadingTag className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Projects
-          </h2>
+          </HeadingTag>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             A collection of my recent work showcasing full-stack development,
@@ -126,6 +127,8 @@ const MobileProjects = () => {
                       src={project.image}
                       alt={`${project.title} - Web Development Project`}
                       loading="lazy"
+                      width="600"
+                      height="400"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
@@ -188,7 +191,7 @@ const EXIT_Y = -140; // yPercent the active card travels to as it clears out
 const EXIT_SCALE = 0.9;
 const EXIT_ROTATION = -18;
 
-const DesktopProjects = () => {
+const DesktopProjects = ({ HeadingTag }) => {
   const sectionRef = useRef(null);
   const cardRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -278,10 +281,12 @@ const DesktopProjects = () => {
     >
       {/* Header */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 z-40 text-center pointer-events-none select-none">
-        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
-          Selected Works
-        </h2>
-        <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-4" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <HeadingTag className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+            Selected Works
+          </HeadingTag>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-4" />
+        </div>
       </div>
 
       {/* Left-side progress indicator */}
@@ -341,6 +346,8 @@ const DesktopCard = ({ project, index }) => {
             src={project.image}
             alt={`${project.title} - Website Development Portfolio`}
             loading="lazy"
+            width="800"
+            height="800"
             className="w-full h-full object-contain drop-shadow-2xl"
           />
           <div className="absolute top-6 right-6">

@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LenisProvider from './components/LenisProvider';
 import SEO from './components/SEO';
-import { localBusinessSchema, personSchema, webSiteSchema, getPortfolioSchema, professionalServiceSchema } from './data/seoSchemas';
+import { localBusinessSchema, personSchema, webSiteSchema, getPortfolioSchema, professionalServiceSchema, getFAQSchema, getServiceSchema } from './data/seoSchemas';
 
 const Hero = React.lazy(() => import('./components/Hero'));
 const About = React.lazy(() => import('./components/About'));
@@ -27,7 +27,7 @@ const HomePage = () => (
       description="Ayan Sahil is a Full Stack Developer and the founder of Ayan Web Solutions, providing professional web development services in Bhopal."
       keywords="Ayan Sahil, Ayan Web Solutions, Full Stack Developer Bhopal, React Developer Bhopal, MERN Stack Developer Bhopal, Freelance Web Developer Bhopal"
       url="https://ayanportfolio.in"
-      jsonLd={[localBusinessSchema, personSchema, webSiteSchema]}
+      jsonLd={[localBusinessSchema, personSchema, webSiteSchema, getFAQSchema()]}
     />
     <Hero />
     <About />
@@ -69,7 +69,7 @@ const ExperiencePage = () => (
       description="Professional web development experience of Ayan Sahil, building scalable and performant web applications."
       url="https://ayanportfolio.in/experience"
     />
-    <Experience />
+    <Experience isMainPage={true} />
   </motion.div>
 );
 
@@ -91,7 +91,7 @@ const ProjectsPage = () => (
   </motion.div>
 );
 
-const ServicesPage = () => (
+const ServicesPage = ({ seoTitle, seoDesc, url, h1Title, schema }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -100,12 +100,12 @@ const ServicesPage = () => (
     className="pt-20"
   >
     <SEO 
-      title="Web Development Services by Ayan Web Solutions" 
-      description="Ayan Web Solutions offers professional website development, UI/UX design, backend development, and performance optimization for local businesses."
-      url="https://ayanportfolio.in/services"
-      jsonLd={professionalServiceSchema}
+      title={seoTitle || "Web Development Services by Ayan Web Solutions"} 
+      description={seoDesc || "Ayan Web Solutions offers professional website development, UI/UX design, backend development, and performance optimization for local businesses."}
+      url={url || "https://ayanportfolio.in/services"}
+      jsonLd={schema || professionalServiceSchema}
     />
-    <Services />
+    <Services customHeading={h1Title} />
   </motion.div>
 );
 
@@ -268,10 +268,34 @@ const AppContent = () => {
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/portfolio" element={<PortfolioPage />} />
                 <Route path="/services" element={<ServicesPage />} />
-                <Route path="/services/web-development" element={<ServicesPage />} />
-                <Route path="/services/ui-ux-design" element={<ServicesPage />} />
-                <Route path="/services/backend-development" element={<ServicesPage />} />
-                <Route path="/services/performance" element={<ServicesPage />} />
+                <Route path="/services/web-development" element={<ServicesPage 
+                  seoTitle="Full Stack Web Development Services | Ayan Web Solutions" 
+                  seoDesc="Get high-performance, responsive web applications built with React and Node.js by Ayan Sahil."
+                  url="https://ayanportfolio.in/services/web-development"
+                  h1Title="Web Development Services"
+                  schema={getServiceSchema("Web Development", "https://ayanportfolio.in/services/web-development", "Custom web applications built with React and Node.js")}
+                />} />
+                <Route path="/services/ui-ux-design" element={<ServicesPage 
+                  seoTitle="Professional UI/UX Design Services | Ayan Web Solutions" 
+                  seoDesc="Beautiful, intuitive user interfaces that provide exceptional user experiences across all devices."
+                  url="https://ayanportfolio.in/services/ui-ux-design"
+                  h1Title="UI/UX Design Services"
+                  schema={getServiceSchema("UI/UX Design", "https://ayanportfolio.in/services/ui-ux-design", "Beautiful, intuitive user interfaces")}
+                />} />
+                <Route path="/services/backend-development" element={<ServicesPage 
+                  seoTitle="Secure Backend Development Services | Ayan Web Solutions" 
+                  seoDesc="Build powerful, secure, and scalable server-side applications using Node.js and Express."
+                  url="https://ayanportfolio.in/services/backend-development"
+                  h1Title="Backend Development Services"
+                  schema={getServiceSchema("Backend Development", "https://ayanportfolio.in/services/backend-development", "Secure and scalable server-side applications")}
+                />} />
+                <Route path="/services/performance" element={<ServicesPage 
+                  seoTitle="Website Performance Optimization | Ayan Web Solutions" 
+                  seoDesc="Speed up your existing applications and improve user experience with Core Web Vitals optimization."
+                  url="https://ayanportfolio.in/services/performance"
+                  h1Title="Performance Optimization Services"
+                  schema={getServiceSchema("Performance Optimization", "https://ayanportfolio.in/services/performance", "Core Web Vitals and speed optimization")}
+                />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />

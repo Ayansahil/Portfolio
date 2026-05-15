@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, ExternalLink } from "lucide-react";
 
-const Experience = () => {
+const Experience = ({ isMainPage = false }) => {
+  const HeadingTag = isMainPage ? 'h1' : 'h2';
   const [inView, setInView] = useState(false);
   const ref = useRef(null);
 
@@ -157,9 +158,9 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <HeadingTag className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Experience
-          </h2>
+          </HeadingTag>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             My journey in web development and the projects that shaped my

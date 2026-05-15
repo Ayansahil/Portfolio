@@ -12,7 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const Services = () => {
+const Services = ({ customHeading }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -88,9 +88,9 @@ const Services = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Services
-          </h2>
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            {customHeading || "Services"}
+          </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Professional services to bring your digital ideas to life

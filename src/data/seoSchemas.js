@@ -101,3 +101,48 @@ export const getPortfolioSchema = (url) => ({
   "url": url,
   "description": "Check out some of our recent web development projects by Ayan Sahil and Ayan Web Solutions."
 });
+
+export const getBreadcrumbSchema = (crumbs) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": crumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": crumb.name,
+    "item": crumb.url
+  }))
+});
+
+export const getFAQSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is Ayan Sahil?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ayan Sahil is a Full Stack Developer and the founder of Ayan Web Solutions, based in Bhopal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What services does Ayan Web Solutions provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide UI/UX Design, Web Development, Backend Development, and Performance Optimization."
+      }
+    }
+  ]
+});
+
+export const getServiceSchema = (serviceName, url, description) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": serviceName,
+  "url": url,
+  "description": description,
+  "provider": {
+    "@id": "https://ayanportfolio.in/#organization"
+  }
+});

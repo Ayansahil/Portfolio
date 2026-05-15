@@ -173,12 +173,14 @@ const Footer = () => {
                             {link.name}
                           </Link>
                         ) : (
-                          <button
-                            onClick={() => handleLinkClick(link)}
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-gray-400 hover:text-blue-400 transition-colors duration-200 block hover:translate-x-1 transform"
                           >
                             {link.name}
-                          </button>
+                          </a>
                         )}
                       </li>
                     ))}

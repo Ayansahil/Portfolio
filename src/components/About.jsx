@@ -98,7 +98,8 @@ const accentClasses = {
 // Kept for backward-compat export, in case other files import `skills`.
 export const skills = skillCategories.flatMap((c) => c.skills);
 
-const About = () => {
+const About = ({ isMainPage = false }) => {
+  const HeadingTag = isMainPage ? 'h1' : 'h2';
   const [inView, setInView] = useState(false);
   const ref = useRef(null);
 
@@ -142,9 +143,9 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 lg:mb-20"
         >
-          <h2 className="text-4xl lg:text-[2.75rem] leading-tight font-bold tracking-tight text-gray-900 dark:text-white mb-4">
+          <HeadingTag className="text-4xl lg:text-[2.75rem] leading-tight font-bold tracking-tight text-gray-900 dark:text-white mb-4">
             About Me
-          </h2>
+          </HeadingTag>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -270,6 +271,8 @@ const About = () => {
                             src={skill.icon}
                             alt={`${skill.name} skill icon`}
                             loading="lazy"
+                            width="16"
+                            height="16"
                             className="w-4 h-4 object-contain shrink-0"
                             onError={(e) => {
                               e.currentTarget.src = '/assets/skills/default.svg';
