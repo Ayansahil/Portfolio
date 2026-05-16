@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
 import puppeteer from 'puppeteer';
+import chromium from '@sparticuz/chromium';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -37,7 +38,15 @@ async function prerender() {
     console.log('Prerender server running on port 4000');
     
     console.log('Launching puppeteer...');
-    const browser = await puppeteer.launch({ headless: 'new' });
+    
+    // Vercel build environment check
+    const isVercel = process.env.VERCEL === '1';
+
+    const browser = await puppeteer.launch({
+      args: isVercel ? chromium.args : [],
+      executablePath: isVercel ? await chromium.executablePath() : undefined,
+      headless: true,
+    });
     const page = await browser.newPage();
     
     // Set a consistent viewport
